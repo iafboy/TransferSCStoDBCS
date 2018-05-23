@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>流程触发</title>
+</head>
+<body>
+	<h1 layout:fragment="header">流程触发</h1>
+	<div layout:fragment="content" class="container">
+		<form id="triggerForm" th:action="@{/(trigger)}" th:object="${triggerMsg}"
+			action="#" method="post">
+			<div th:if="${#fields.hasErrors('*')}" class="alert alert-error">
+				<p th:each="error : ${#fields.errors('*')}" th:text="${error}">
+					Validation error</p>
+			</div>
+			<div class="pull-right">
+				<a th:href="@{/}" href="messages.html"> Messages </a>
+			</div>
+			<label for="i_projectCodstId">项目成本单号</label><input th:field="*{i_projectCodstId}" th:class="${#fields.hasErrors('i_projectCodstId')} ? 'field-error'" />
+			<label for="i_purchaseOrderId">采购订单号</label><input th:field="*{i_purchaseOrderId}" th:class="${#fields.hasErrors('i_purchaseOrderId')} ? 'field-error'" />
+			<label for="i_devlieryId">到货单号</label><input th:field="*{i_devlieryId}" th:class="${#fields.hasErrors('i_devlieryId')} ? 'field-error'" />
+			<label for="i_type">类别</label><input th:field="*{i_type}" th:class="${#fields.hasErrors('i_type')} ? 'field-error'" />
+			<label for="i_assertType">资产类别</label><input th:field="*{i_assertType}" th:class="${#fields.hasErrors('i_assertType')} ? 'field-error'" />
+			<label for="i_validation">验收单号</label><input th:field="*{i_validation}" th:class="${#fields.hasErrors('i_validation')} ? 'field-error'" />
+			<label for="i_supplier">供应商</label><input th:field="*{i_supplier}" th:class="${#fields.hasErrors('i_supplier')} ? 'field-error'" />
+			<label for="i_contactor">供应商联系人</label><input th:field="*{i_contactor}" th:class="${#fields.hasErrors('i_contactor')} ? 'field-error'" />
+			<label for="i_mobile">供应商联系方式</label><input th:field="*{i_mobile}" th:class="${#fields.hasErrors('i_mobile')} ? 'field-error'" />
+			<label for="i_projectName">项目名称</label><input th:field="*{i_projectName}" th:class="${#fields.hasErrors('i_projectName')} ? 'field-error'" />
+			<label for="i_mounts">金额</label><input th:field="*{i_mounts}" th:class="${#fields.hasErrors('i_mounts')} ? 'field-error'" />
+			<div class="form-actions">
+				<input type="submit" value="Save" />
+			</div>
+		</form>
+	</div>
+</body>
+</html>
